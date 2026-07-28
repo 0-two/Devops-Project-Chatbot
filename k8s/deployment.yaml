@@ -20,5 +20,11 @@ spec:
         image: 161007500783.dkr.ecr.us-east-1.amazonaws.com/my-app-repo:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 80 
-        # Note: Change '80' to 8080 or 3000 if your backend uses a different port
+        - containerPort: 3000
+        env:
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: openai-secret
+              key: OPENAI_API_KEY
+        # Change '80' to 8080 or 3000 if backend uses a different port
