@@ -16,6 +16,9 @@
   <img src="https://img.shields.io/badge/CI%2FCD-Jenkins-D24939?style=for-the-badge&logo=jenkins" alt="Jenkins" />
 </p>
 
+<p align="center">
+  <a href="https://devops-project-chatbot-frontend.vercel.app">Deployed on Vercel (Sorry I stopped my EC2 instance, Have to save credits :)</a>
+</p>
 ---
 
 
