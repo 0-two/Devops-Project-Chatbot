@@ -25,6 +25,11 @@ spec:
         - name: OPENAI_API_KEY
           valueFrom:
             secretKeyRef:
-              name: openai-secret
+              name: app-secrets
               key: OPENAI_API_KEY
+        - name : MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: MONGO_URI
         # Change '80' to 8080 or 3000 if backend uses a different port
