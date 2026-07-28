@@ -18,19 +18,50 @@
 
 ---
 
+
+https://github.com/user-attachments/assets/931dae3d-0a5e-41c1-ad25-2c6a76c4e74f
+
+
+<p align="center">
+  <img src="https://github.com/0-two/Devops-Project-Chatbot/blob/main/assets/pipeline.jpg"/>
+</p>
+
 ## Overview
 
 **BotX** is an end-to-end, highly scalable AI chatbot application. It features a striking Neobrutalism user interface on the frontend and a robust microservices architecture on the backend. The AI generation is powered by the OpenAI Node SDK configured to interface with **NVIDIA NIM (Cloud Functions)**.
 
 This project was built to demonstrate modern DevOps and Cloud-Native practices, featuring a fully automated CI/CD pipeline using **Jenkins**, containerization via **Docker**, and orchestration on **AWS Elastic Kubernetes Service (EKS)**.
 
-## Architecture Flow
+<p align="center">
+  <tr>
+    <td><img src="https://github.com/0-two/Devops-Project-Chatbot/blob/main/assets/Screenshot%202026-07-28%20214107.png" width="500"/></td>
+    <td><img src="https://github.com/0-two/Devops-Project-Chatbot/blob/main/assets/Screenshot%202026-07-28%20234155.png" width="500"/></td>
+    <img src="https://github.com/0-two/Devops-Project-Chatbot/blob/main/assets/Screenshot%202026-07-28%20234302.png" width="500"/>
+  </tr>
+</p>
 
-1. **User Interface (Vercel):** Users interact with the React frontend.
-2. **Proxy Rewrite:** Vercel securely proxies `/api` requests to bypass Mixed Content restrictions (HTTPS -> HTTP).
-3. **AWS Load Balancer:** An internet-facing AWS Classic/Application Load Balancer receives the traffic on Port 80.
-4. **Kubernetes (AWS EKS):** The LB routes traffic to Pods running the Node.js backend on Port 3000.
-5. **Database & AI:** The backend asynchronously logs data to **MongoDB Atlas** and streams responses from the **NVIDIA NIM API**.
+## Architecture
+Integrates the following industry-standard tools to ensure code quality, security, and scalability:
+
+**☁️ AWS EC2:** Infrastructure hosting and virtual machine provisioning.
+
+**⚙️ Jenkins:** Core automation engine orchestrating the build, test, and deployment workflows.
+
+**🔍 SonarQube:** Continuous inspection and static code analysis to maintain code quality.
+
+**🛡️ Trivy:** Comprehensive file system and Docker image vulnerability scanning.
+
+**📦 Nexus Repository Manager:** Centralized storage and management for application artifacts.
+
+**🏗️ Terraform:** Infrastructure as Code (IaC) utilized to provision the Amazon EKS cluster.
+
+**🐳 Docker:** Application containerization ensuring consistency across environments.
+
+**☸️ Kubernetes (Amazon EKS):** Container orchestration for reliable, highly available deployments.
+
+**📈 Prometheus & Grafana:** Real-time observability and performance monitoring for both the CI/CD pipeline and the deployed application.
+
+**📊 Database & AI:** The backend asynchronously logs data to **MongoDB Atlas** and streams responses from the **NVIDIA NIM API**.
 
 ---
 
@@ -52,6 +83,7 @@ This project was built to demonstrate modern DevOps and Cloud-Native practices, 
 * **Orchestration:** Kubernetes (AWS EKS)
 * **CI/CD:** Jenkins
 * **Networking:** AWS VPC (Public/Private Subnets), AWS Load Balancers
+* **Monitoring:** Graffana and Promethus 
 
 ---
 
