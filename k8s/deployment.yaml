@@ -20,7 +20,7 @@ spec:
         image: 161007500783.dkr.ecr.us-east-1.amazonaws.com/my-app-repo:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 80 
+        - containerPort: 3000
         env:
         - name: OPENAI_API_KEY
           valueFrom:
