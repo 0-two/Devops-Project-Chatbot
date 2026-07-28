@@ -18,13 +18,13 @@
 
 ---
 
-## 📖 Overview
+## Overview
 
 **BotX** is an end-to-end, highly scalable AI chatbot application. It features a striking Neobrutalism user interface on the frontend and a robust microservices architecture on the backend. The AI generation is powered by the OpenAI Node SDK configured to interface with **NVIDIA NIM (Cloud Functions)**.
 
 This project was built to demonstrate modern DevOps and Cloud-Native practices, featuring a fully automated CI/CD pipeline using **Jenkins**, containerization via **Docker**, and orchestration on **AWS Elastic Kubernetes Service (EKS)**.
 
-## 🏗️ Architecture Flow
+## Architecture Flow
 
 1. **User Interface (Vercel):** Users interact with the React frontend.
 2. **Proxy Rewrite:** Vercel securely proxies `/api` requests to bypass Mixed Content restrictions (HTTPS -> HTTP).
@@ -34,7 +34,7 @@ This project was built to demonstrate modern DevOps and Cloud-Native practices, 
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Frontend
 * **Framework:** React.js
@@ -55,7 +55,7 @@ This project was built to demonstrate modern DevOps and Cloud-Native practices, 
 
 ---
 
-## 🚀 Getting Started (Local Development)
+## Getting Started (Local Development)
 
 ### Prerequisites
 * Node.js (v18+)
@@ -133,10 +133,9 @@ Update all API calls in React to hit the relative `/api` path (e.g., `axios.post
 ---
 
 ## 🐛 Troubleshooting
-
-* **ERR_CONNECTION_TIMED_OUT:** Check your AWS EC2 Security Groups for the Load Balancer (allow inbound Port 80) and the Worker Nodes (allow traffic from the LB). Ensure your EKS subnets are tagged with `kubernetes.io/role/elb=1`.
-* **500 Internal Server Error (MongoDB):** Ensure your `MONGO_URI` is correctly injected from Kubernetes Secrets into your pod environments.
-* **503 ResourceExhausted:** NVIDIA NIM free tier limits reached. Add a retry loop in your Node.js controller with a 2-3 second delay.
+ 
+* **500 Internal Server Error (MongoDB / OPEN_AI_api):** Make sure the api keys are  correctly injected from Kubernetes Secrets into your pod environments.
+* **503 ResourceExhausted:** NVIDIA NIM free tier limits reached. Wait for a few seconds or if u want u can add a retry loop in your Node.js controller with a 2-3 second delay.
 
 ---
 
