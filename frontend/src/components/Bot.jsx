@@ -25,7 +25,7 @@ function Bot() {
       setInput("");
       setLoading(true);
         try{
-            const res = await axios.post("http://localhost:4002/bot/v1/message",{
+            const res = await axios.post("/api/bot/v1/message",{
           text: trimmedInput
             })
             if(res.status===200){
@@ -47,33 +47,44 @@ function Bot() {
     }
 
   return (
-    <div className='flex flex-col min-h-screen bg-[#0d0d0d] text-white'>
-         {/* Navbar & Header */}
-      <header className="fixed top-0 left-0 w-full border-b border-gray-800 bg-[#0d0d0d] z-10">
-        <div className=" container mx-auto flex justify-between items-center px-6 py-4">
-          <h1 className="text-lg font-bold">BotX</h1>
-          <FaUserCircle size={30} className="cursor-pointer" />
+    <div className="flex min-h-screen flex-col bg-[#f4e9d8] text-[#111111]">
+      <header className="fixed left-0 top-0 z-20 w-full border-b-4 border-[#111111] bg-[#ffde59]">
+        <div className="container mx-auto flex items-center justify-between px-6 py-4">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center border-4 border-[#111111] bg-[#7ee787] shadow-[4px_4px_0_#111111]">
+              <span className="text-lg font-black">B</span>
+            </div>
+            <div>
+              <h1 className="text-xl font-black uppercase tracking-wide">BotX</h1>
+              <p className="text-sm font-semibold">Neobrutal chat</p>
+            </div>
+          </div>
+          <div className="flex h-10 w-10 items-center justify-center border-4 border-[#111111] bg-[#ff8a5b] shadow-[4px_4px_0_#111111]">
+            <FaUserCircle size={24} className="text-[#111111]" />
+          </div>
         </div>
       </header>
 
-      {/* Chat area */}
-      <main className="flex-1 overflow-y-auto pt-20 pb-24 flex items-center justify-center">
-        <div className="w-full max-w-4xl mx-auto px-4 flex flex-col space-y-3">
+      <main className="flex-1 overflow-y-auto pb-28 pt-28">
+        <div className="mx-auto flex w-full max-w-4xl flex-col space-y-3 px-4">
           {messages.length === 0 ? (
-            // Centered welcome message
-            <div className="text-center text-gray-400 text-lg">
-              👋 Hi, I'm{" "}
-              <span className="text-green-500 font-semibold">BotX</span>.
+            <div className="mt-10 border-4 border-[#111111] bg-[#ffffff] p-8 text-center shadow-[8px_8px_0_#111111]">
+              <p className="text-lg font-black uppercase">
+                👋 Hi, I'm <span className="text-[#2f7d32]">BotX</span>
+              </p>
+              <p className="mt-2 text-sm font-semibold text-[#444444]">
+                Send a message to start the conversation.
+              </p>
             </div>
           ) : (
             <>
               {messages.map((msg, idx) => (
                 <div
                   key={idx}
-                  className={`px-4 py-2 rounded-xl max-w-[75%] ${
+                  className={`max-w-[85%] border-4 border-[#111111] px-4 py-3 font-semibold shadow-[5px_5px_0_#111111] ${
                     msg.sender === "user"
-                      ? "bg-blue-600 text-white self-end"
-                      : "bg-gray-800 text-gray-100 self-start"
+                      ? "self-end bg-[#7ee787]"
+                      : "self-start bg-[#ffffff]"
                   }`}
                 >
                   {msg.text}
@@ -81,32 +92,31 @@ function Bot() {
               ))}
 
               {loading && (
-                <div className="bg-gray-700 text-gray-300 px-4 py-2 rounded-xl max-w-[60%] self-start">
-                  BotX is typing...
+                <div className="self-start border-4 border-[#111111] bg-[#ffd166] px-4 py-3 font-semibold shadow-[5px_5px_0_#111111]">
+                  BotX is thinking...
                 </div>
               )}
-           <div ref={messagesEndRef}/>
+              <div ref={messagesEndRef} />
             </>
           )}
         </div>
       </main>
 
-      {/* Input & Footer */}
-      <footer className="fixed bottom-0 left-0 w-full border-t border-gray-800 bg-[#0d0d0d] z-10">
-        <div className="max-w-4xl mx-auto flex justify-center px-4 py-3">
-          <div className="w-full flex bg-gray-900 rounded-full px-4 py-2 shadow-lg">
+      <footer className="fixed bottom-0 left-0 z-20 w-full border-t-4 border-[#111111] bg-[#f4e9d8]">
+        <div className="mx-auto flex max-w-4xl justify-center px-4 py-3">
+          <div className="flex w-full items-center border-4 border-[#111111] bg-[#ffffff] px-3 py-2 shadow-[6px_6px_0_#111111]">
             <input
               type="text"
-              className="flex-1 bg-transparent outline-none text-white placeholder-gray-400 px-2"
-              placeholder="Ask BotSpoof..."
-             value={input}
-             onChange={(e) => setInput(e.target.value)}
-             onKeyDown={handleKeyPress}
+              className="flex-1 bg-transparent px-2 text-base font-semibold text-[#111111] outline-none placeholder:text-[#6b7280]"
+              placeholder="Ask BotX..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyPress}
             />
             <button
-             type="button"
-             onClick={handleSendMessage}
-              className="bg-green-600 hover:bg-green-700 px-4 py-1 rounded-full text-white font-medium transition-colors"
+              type="button"
+              onClick={handleSendMessage}
+              className="ml-2 border-4 border-[#111111] bg-[#ff5d8f] px-4 py-2 font-black uppercase text-[#111111] shadow-[3px_3px_0_#111111] transition-transform hover:-translate-y-0.5"
             >
               Send
             </button>
@@ -114,7 +124,7 @@ function Bot() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
 export default Bot
